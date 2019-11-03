@@ -6,6 +6,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Router Page' });
 });
 
+// ルートパラメーター
+router.get('/name/:name_text', function(req, res, next) {
+  // GET /user/name/name_text
+  console.log(req.params.name_text);
+  // => 'name_text'
+  res.send(req.params.name_text);
+});
+
 // ルートハンドラー例
 var cb0 = function(req, res, next) {
   console.log('0号です！次は、１号さんの出番');

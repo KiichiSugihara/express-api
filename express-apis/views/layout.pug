@@ -2,6 +2,21 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    //- link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/nav-drawer.css')
   body
+    header
+      div(id="nav-drawer")
+        input(id="nav-input" type="checkbox" class="nav-unshown")
+        label(id="nav-open" for="nav-input")
+          span
+        label(class="nav-unshown" id="nav-close" for="nav-input")
+        div(id="nav-content")
+          ul
+            li
+              a(href="/") ホーム
+            li
+              a(href="/upload") アップロード
+            li
+              a(href="/router") ルーターサンプル
     block content

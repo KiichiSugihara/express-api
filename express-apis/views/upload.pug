@@ -2,5 +2,6 @@ extends layout
 
 block content
   form(method="POST" enctype="multipart/form-data" action="/upload")
-    input(type="file" name="thumbnail")
+    input(type="file" name="uploadFile")
     input(type="submit")
+    p #{message}

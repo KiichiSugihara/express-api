@@ -1,23 +1,25 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+// multerのインポート
 var multer = require('multer');
+// 保存先を相対ルートの./uplods/以下へ指定
 var upload = multer({ dest: './uploads/' });
 
-/* GET home page. */
+/* /uploadへのgetリクエスト時にアップロード画面を表示 */
 router.get('/', function(req, res, next) {
   res.render('upload', { title: 'Upload' });
 });
 
-/* GET users listing. */
-router.post('/', upload.fields([{ name: 'thumbnail' }]), function(
+/* /uploadへのpostリクエスト時にアップロードを行い、画面を表示 */
+router.post('/', upload.fields([{ name: 'uploadFile' }]), function(
   req,
   res,
   next
 ) {
-  var path = req.files.thumbnail[0].path;
-  var filename = req.files.thumbnail[0].filename;
-  var originalname = req.files.thumbnail[0].originalname;
+  var path = req.files.uploadFile[0].path;
+  var filename = req.files.uploadFile[0].filename;
+  var originalname = req.files.uploadFile[0].originalname;
   var targetPath = './uploads/' + originalname;
 
   console.log(path, filename, originalname);
@@ -38,6 +40,11 @@ router.post('/', upload.fields([{ name: 'thumbnail' }]), function(
           ' bytes'
       );
     });
+  });
+
+  res.render('upload', {
+    title: 'Upload',
+    message: 'アップロードが完了しました'
   });
 });
 

@@ -12,6 +12,9 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pm2": "^4.1.2",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "@azure/storage-blob": "^10.5.0",
+    "@types/dotenv": "^4.0.3",
+    "dotenv": "^6.0.0"
   }
 }

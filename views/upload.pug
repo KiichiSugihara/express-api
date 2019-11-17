@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  form(method="POST" enctype="multipart/form-data" action="/upload")
+    input(type="file" name="uploadFile")
+    input(type="submit")
+    p #{message}
+  form(method="POST" enctype="multipart/form-data" action="/upload/multi")
+    input(type="file" name="uploadMultiFile" multiple)
+    input(type="submit")
+    p #{messageMulti}

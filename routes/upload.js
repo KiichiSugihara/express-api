@@ -1,10 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var fs = require('fs');
+const service = require('./azure-service');
+
+// 以下そのままに
+let express = require('express');
+let router = express.Router();
+
 // multerのインポート
-var multer = require('multer');
+let multer = require('multer');
 // 保存先を./uplods/以下へ指定
-var uploads = multer({ dest: './local/uploads/' });
+let uploads = multer({ dest: './local/uploads/' });
 
 /* /uploadへのgetリクエスト時にアップロード画面を表示 */
 router.get('/', function(req, res, next) {
@@ -17,10 +20,10 @@ router.post('/', uploads.fields([{ name: 'uploadFile' }]), function(
   res,
   next
 ) {
-  var path = req.files.uploadFile[0].path;
-  var filename = req.files.uploadFile[0].filename;
-  var originalname = req.files.uploadFile[0].originalname;
-  var targetPath = './local/uploads/' + originalname;
+  let path = req.files.uploadFile[0].path;
+  let filename = req.files.uploadFile[0].filename;
+  let originalname = req.files.uploadFile[0].originalname;
+  let targetPath = './local/uploads/' + originalname;
 
   console.log(path, filename, originalname);
 
@@ -53,10 +56,10 @@ router.post('/multi', uploads.fields([{ name: 'uploadMultiFile' }]), function(
   res,
   next
 ) {
-  var path = req.files.uploadMultiFile[0].path;
-  var filename = req.files.uploadMultiFile[0].filename;
-  var originalname = req.files.uploadMultiFile[0].originalname;
-  var targetPath = './local/uploads/' + originalname;
+  let path = req.files.uploadMultiFile[0].path;
+  let filename = req.files.uploadMultiFile[0].filename;
+  let originalname = req.files.uploadMultiFile[0].originalname;
+  let targetPath = './local/uploads/' + originalname;
 
   console.log(path, filename, originalname);
 

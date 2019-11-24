@@ -1,11 +1,13 @@
 extends layout
 
 block content
-  form(method="POST" enctype="multipart/form-data" action="/upload")
+  form(method="POST" enctype="multipart/form-data" action="/blob-upload/simple-upload")
+    label 単数file
     input(type="file" name="uploadFile")
     input(type="submit")
     p #{message}
-  form(method="POST" enctype="multipart/form-data" action="/upload/multi")
+  form(method="POST" enctype="multipart/form-data" action="/blob-upload/multi-upload")
+    label 複数file
     input(type="file" name="uploadMultiFile" multiple)
     input(type="submit")
     p #{messageMulti}
